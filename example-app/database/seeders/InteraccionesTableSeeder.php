@@ -13,7 +13,6 @@ class InteraccionesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         Interaccion::create([
             'perro_interesado_id' => 1,
             'perro_candidato_id' => 2,
@@ -21,7 +20,7 @@ class InteraccionesTableSeeder extends Seeder
         ]);
 
         Interaccion::create([
-            'perro_interesado_id' => 3,
+            'perro_interesado_id' => 2,
             'perro_candidato_id' => 1,
             'preferencia' => 'rechazado',
         ]);
