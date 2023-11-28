@@ -82,7 +82,6 @@ class PerroController extends Controller
         $data = [
             'id' => $perro->id,
             'nombre' => $perro->nombre,
-            'descripcion' => $perro->descripcion,
         ];
 
         return response()->json($data);

@@ -53,4 +53,14 @@ class InteraccionController extends Controller
 
         return response()->json($interaccion, 200);
     }
+
+    public function aceptados($id){
+        $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'aceptado')->get();
+        return response()->json($interaccion);
+    }
+    
+    public function rechazados($id){
+        $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'rechazado')->get();
+    return response()->json($interaccion);
+    }
 }
