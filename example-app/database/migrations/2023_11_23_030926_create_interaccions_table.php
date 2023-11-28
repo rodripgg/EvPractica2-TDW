@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('interaccions', function (Blueprint $table) {
+        Schema::create('interacciones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('perro_interesado_id');
             $table->unsignedBigInteger('perro_candidato_id');
             $table->enum('preferencia', ['aceptado', 'rechazado']);
             $table->timestamps();
+            $table->softDeletes(); // Agregar la columna deleted_at 
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('interaccions');
+        Schema::dropIfExists('interacciones');
     }
 };

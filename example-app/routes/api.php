@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PerroController;
+use App\Http\Controllers\InteraccionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,12 @@ Route::post('/perrosCreate', [PerroController::class, 'create']);
 Route::delete('/perrosBorrar/{id}', [PerroController::class, 'destroy']);
 Route::get('/perro/{id}', [PerroController::class, 'show']);
 Route::put('/perroUpdate/{id}', [PerroController::class, 'update']);
+
+// rutas de interacciones
+Route::get('/interacciones', [InteraccionController::class, 'index']);
+Route::post('/interaccionesCreate', [InteraccionController::class, 'create']);
+Route::get('/interacciones/{id}', [InteraccionController::class, 'show']);
+Route::put('/interacciones/{id}', [InteraccionController::class, 'update']);
+Route::delete('/interacciones/{id}', [InteraccionController::class, 'destroy']);
 
 

@@ -10,5 +10,8 @@ class Perro extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $table = 'perros';
+
     protected $fillable = ['nombre', 'foto_url', 'descripcion'];
 }
