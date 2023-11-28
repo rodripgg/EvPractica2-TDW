@@ -21,5 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/perros/random', [PerroController::class, 'random']);
 Route::get('/perros', [PerroController::class, 'index']);
 Route::post('/perrosCreate', [PerroController::class, 'create']);
+Route::delete('/perrosBorrar/{id}', [PerroController::class, 'destroy']);
+Route::get('/perro/{id}', [PerroController::class, 'show']);
+Route::put('/perroUpdate/{id}', [PerroController::class, 'update']);
 
 

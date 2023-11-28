@@ -37,17 +37,40 @@ class PerroController extends Controller
     public function show($id)
     {
         $perro = Perro::findOrFail($id);
-        return view('perros.show', compact('perro'));
+        return response()->json($perro, 201);
     }
 
     public function update(Request $request, $id)
     {
-        // Lógica para actualizar el perro
+        $perro = Perro::find($id);
+        if ($perro) {
+
+            if ($request->has('nombre')) {
+                $perro->nombre = $request->nombre;
+            }
+            if ($request->has('descripcion')) {
+                $perro->descripcion = $request->descripcion;
+            }
+            if ($request->has('url_foto')) {
+                $perro->url_foto = $request->url_foto;
+            }
+            $perro->save();
+    
+            return response()->json($perro, 200);
+        }
+        return response()->json(['error' => 'perro no encontrado'], 404);
     }
 
     public function destroy($id)
     {
-        // Lógica para eliminar el perro (soft delete)
+        $perro = Perro::find($id);
+
+        if($perro){
+            $perro->delete();
+            return response()->json(['message' => 'perro eliminado'], 200);
+        }
+
+        return response()->json(['error' => 'perro no encontrado'], 404);
     }
 
     public function random()
