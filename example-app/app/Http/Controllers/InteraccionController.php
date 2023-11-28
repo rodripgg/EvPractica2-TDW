@@ -56,11 +56,17 @@ class InteraccionController extends Controller
 
     public function aceptados($id){
         $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'aceptado')->get();
+        if($interaccion->isEmpty()){
+            return response()->json(['error' => 'no hay perros aceptados'], 404);
+        }
         return response()->json($interaccion);
     }
     
     public function rechazados($id){
         $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'rechazado')->get();
-    return response()->json($interaccion);
+        if($interaccion->isEmpty()){
+            return response()->json(['error' => 'no hay perros rechazados'], 404);
+        }
+        return response()->json($interaccion);
     }
 }
