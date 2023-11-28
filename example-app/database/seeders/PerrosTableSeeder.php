@@ -25,5 +25,17 @@ class PerrosTableSeeder extends Seeder
             'url_foto' => 'otra_url_de_la_foto.jpg',
             'descripcion' => 'Perro amigable y cariñoso',
         ]);
+
+        Perro::create([
+            'nombre' => 'Copi copi',
+            'url_foto' => 'otra_url_de_la_foto.jpg',
+            'descripcion' => 'otro perro amigable y cariñoso',
+        ]);
+
+        Perro::create([
+            'nombre' => 'Chaucha',
+            'url_foto' => 'otra_url_de_la_foto.jpg',
+            'descripcion' => 'perro guaton',
+        ]);
     }
 }
