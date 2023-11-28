@@ -14,8 +14,12 @@ use App\Http\Controllers\PerroController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/perros/random', [PerroController::class, 'random']);
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/perros/random', [PerroController::class, 'random']);
+Route::get('/perros', [PerroController::class, 'index']);
+Route::post('/perrosCreate', [PerroController::class, 'create']);
+
+
