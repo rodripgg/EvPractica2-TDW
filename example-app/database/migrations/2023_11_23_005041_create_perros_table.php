@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url_foto')->nullable();
             $table->text('descripcion');
             $table->timestamps();
+            $table->softDeletes(); // Agregar la columna deleted_at
         });
     }
 

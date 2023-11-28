@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PerroController;
+use App\Http\Controllers\InteraccionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/perros/random', [PerroController::class, 'random']);
 Route::get('/perros', [PerroController::class, 'index']);
 Route::post('/perrosCreate', [PerroController::class, 'create']);
+
+// rutas de interacciones
+Route::get('/interacciones', [InteraccionController::class, 'index']);
+Route::post('/interaccionesCreate', [InteraccionController::class, 'create']);
+Route::get('/interacciones/{id}', [InteraccionController::class, 'show']);
+Route::put('/interacciones/{id}', [InteraccionController::class, 'update']);
+Route::delete('/interacciones/{id}', [InteraccionController::class, 'destroy']);
 
 
