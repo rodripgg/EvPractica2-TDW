@@ -40,4 +40,7 @@ Route::get('/interacciones/{id}', [InteraccionController::class, 'show']);
 Route::put('/interacciones/{id}', [InteraccionController::class, 'update']);
 Route::delete('/interacciones/{id}', [InteraccionController::class, 'destroy']);
 
+Route::get('/interacciones/aceptados/{id}', [InteraccionController::class, 'aceptados']);
+Route::get('/interacciones/rechazados/{id}', [InteraccionController::class, 'rechazados']);
+
 

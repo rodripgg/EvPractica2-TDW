@@ -74,6 +74,22 @@ class InteraccionController extends Controller
         return response()->json($interaccion, 200);
     }
 
+    public function aceptados($id){
+        $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'aceptado')->get();
+        if($interaccion->isEmpty()){
+            return response()->json(['error' => 'no hay perros aceptados'], 404);
+        }
+        return response()->json($interaccion);
+    }
+    
+    public function rechazados($id){
+        $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'rechazado')->get();
+        if($interaccion->isEmpty()){
+            return response()->json(['error' => 'no hay perros rechazados'], 404);
+        }
+        return response()->json($interaccion);
+    }
+
     //funcion match para mostrar un mensaje de match si hay match entre dos perros
     public function match($id)
     {
