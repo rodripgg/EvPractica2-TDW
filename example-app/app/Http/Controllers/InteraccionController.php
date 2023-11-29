@@ -97,7 +97,7 @@ class InteraccionController extends Controller
         $perro_interesado = $interaccion->perro_interesado_id;
         $perro_candidato = $interaccion->perro_candidato_id;
         $interaccion2 = Interaccion::where('perro_interesado_id', $perro_candidato)->where('perro_candidato_id', $perro_interesado)->first();
-        if ($interaccion->preferencia == $interaccion2->preferencia) {
+        if ($interaccion2 !== null && $interaccion->preferencia == $interaccion2->preferencia) {
             return response()->json(['message' => 'Match!'], 200);
         } else {
             return response()->json(['message' => 'No hay match'], 200);
