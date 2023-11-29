@@ -86,4 +86,19 @@ class PerroController extends Controller
 
         return response()->json($data);
     }
+
+    //ecibe el id del perro interesado y retorna un perro random distinto al del id recibido
+    public function candidato($id)
+    {
+        $perro = Perro::inRandomOrder()->where('id', '!=', $id)->first();
+
+        // Retornar solo el nombre e ID del perro
+        $data = [
+            'id' => $perro->id,
+            'nombre' => $perro->nombre,
+            'descripcion' => $perro->descripcion,
+        ];
+
+        return response()->json($data);
+    }
 }

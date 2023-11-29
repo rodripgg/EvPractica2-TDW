@@ -19,12 +19,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// rutas de perros
 Route::get('/perros/random', [PerroController::class, 'random']);
 Route::get('/perros', [PerroController::class, 'index']);
 Route::post('/perrosCreate', [PerroController::class, 'create']);
 Route::delete('/perrosBorrar/{id}', [PerroController::class, 'destroy']);
 Route::get('/perro/{id}', [PerroController::class, 'show']);
 Route::put('/perroUpdate/{id}', [PerroController::class, 'update']);
+
+//ruta de candidatos
+Route::get('/candidato/{id}', [PerroController::class, 'candidato']);
+
+//ruta match
+Route::get('/match/{id}', [InteraccionController::class, 'match']);
 
 // rutas de interacciones
 Route::get('/interacciones', [InteraccionController::class, 'index']);
