@@ -31,7 +31,8 @@ Route::put('/perroUpdate/{id}', [PerroController::class, 'update']);
 Route::get('/candidato/{id}', [PerroController::class, 'candidato']);
 
 //ruta match
-Route::get('/match/{id}', [InteraccionController::class, 'match']);
+Route::get('/match/{idInterasado}/{idCandidato}', [InteraccionController::class, 'match']);
+
 
 // rutas de interacciones
 Route::get('/interacciones', [InteraccionController::class, 'index']);
