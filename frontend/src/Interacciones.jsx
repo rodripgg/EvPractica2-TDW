@@ -3,10 +3,10 @@ import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function Interacciones() {
-    const [dog, setDog] = useState({ nombre: '', descripcion: '', foto_url: '' });
+    const [dog, setDog] = useState({ nombre: '',descripcion: '' , url_foto: ''});
 
     const handleChange = (e) => {
-        setDog({ ...dog, [e.target.name]: e.target.value });
+        setDog({ ...dog, [e.target.name]: e.target.value });        
     }
 
     const handleSubmit = (e) => {
@@ -15,15 +15,32 @@ function Interacciones() {
         axios.post(`${apiUrl}/perrosCreate`, dog)
             .then(response => {
                 console.log(response.data);
+                console.log(dog);
+
             })
             .catch((error) => {
                 console.error('Error:', error);
+                console.error('Error de Axios:', error);
+                console.log('Detalles del error:', error.response.data);
+                console.log('Código de estado HTTP:', error.response.status);
+
             });
     }
 
+    function getRandomDogImage() {
+        axios.get('https://dog.ceo/api/breeds/image/random')
+            .then(response => {
+                console.log(response.data.message); // URL de la imagen aleatoria
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+    getRandomDogImage();
+
     //Realiza una solicitud de ejemplo utilizando axios
     const verInteracciones = async () => {
-        axios.get(`${apiUrl}/interacciones`)
+        axios.get(`${apiUrl}/perros`)
             .then(response => {
                 console.log(response.data);
             })
@@ -44,12 +61,13 @@ function Interacciones() {
                 </label>
                 <label>
                     Descripción:
-                    <textarea name="descripcion" value={dog.descripcion} onChange={handleChange} />
+                    <input type="text" name="descripcion" value={dog.descripcion} onChange={handleChange} />
                 </label>
                 <label>
                     Foto (URL):
-                    <input type="text" name="foto_url" value={dog.foto_url} onChange={handleChange} />
+                    <input type="text" name="url_foto" value={dog.url_foto} onChange={handleChange} />
                 </label>
+               
                 <button type="submit">Registrar</button>
             </form>
         </div>

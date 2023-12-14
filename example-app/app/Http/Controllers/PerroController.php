@@ -24,7 +24,7 @@ class PerroController extends Controller
         $perro = new Perro;
         $perro->nombre = $request->nombre;
         $perro->descripcion = $request->descripcion;
-        $perro->url_foto = $response->json()['message'];
+        $perro->url_foto = $request->url_foto;
         $perro->save();
 
         return response()->json($perro, 201);
