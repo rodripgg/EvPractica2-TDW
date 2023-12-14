@@ -1,0 +1,27 @@
+.dog-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.dog-card:hover {
+    border: 1px solid #000000;
+}
+
+.dog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.dog-card-image {
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
