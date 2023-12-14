@@ -92,14 +92,16 @@ class InteraccionController extends Controller
     }
 
     //funcion match para mostrar un mensaje de match si hay match entre dos perros, entra los id de los perros interesado y candidato, si mutuamente se aceptan, hay match
-    public function match($idInteresado, $idCandidato)
+    public function match($idCandidato, $idInteresado)
     {
         $interaccion = Interaccion::where('perro_interesado_id', $idInteresado)->where('perro_candidato_id', $idCandidato)->where('preferencia', 'aceptado')->first();
         $interaccion2 = Interaccion::where('perro_interesado_id', $idCandidato)->where('perro_candidato_id', $idInteresado)->where('preferencia', 'aceptado')->first();
+
         if($interaccion && $interaccion2){
             return response()->json(['message' => 'match'], 200);
         }
-        return response()->json(['message' => 'no hay match'], 200);
+        return response()->json(['message' => 'no hay match'], 204);
+
     }
 
     public function random($idInteresado)

@@ -13,7 +13,8 @@ const Interaccion = () => {
 
 	const obtenerPerroRandom = async () => {
 		try {
-			const response = await fetch(`${apiUrl}/perros/random`); // /interacciones/random/id
+			const response = await fetch(`${apiUrl}/interacciones/random/${perro.id}`); // /interacciones/random/id
+            // revisa si ya existe una interaccion entre el perro seleccionado y el perro random
 			const data = await response.json();
 			setPerroRandom(data);
 		} catch (error) {
