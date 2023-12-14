@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function Interacciones() {
+function Registro() {
 	const [dog, setDog] = useState({ nombre: "", descripcion: "", url_foto: "" });
 
 	const handleChange = (e) => {
@@ -44,7 +44,7 @@ function Interacciones() {
 
 	return (
 		<div>
-			<h1>Interacciones</h1>
+			<h1>Registro</h1>
 			<form onSubmit={handleSubmit}>
 				<label>
 					Nombre:
@@ -84,4 +84,4 @@ function Interacciones() {
 	);
 }
 
-export default Interacciones;
+export default Registro;
