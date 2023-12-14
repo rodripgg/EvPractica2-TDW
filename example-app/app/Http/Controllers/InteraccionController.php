@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers;;
 
 use Illuminate\Http\Request;
 use App\Models\Interaccion;
+use App\Models\Perro;
 
 class InteraccionController extends Controller
 {
@@ -100,5 +101,32 @@ class InteraccionController extends Controller
         }
         return response()->json(['message' => 'no hay match'], 200);
     }
+
+    public function random($idInteresado)
+{
+    // Obtener todos los perro_candidato_id para el perro_interesado_id dado
+    $perrosCandidatos = Interaccion::where('perro_interesado_id', $idInteresado)
+        ->pluck('perro_candidato_id')
+        ->push($idInteresado);
+
+    // Obtener todos los perros que no están en el conjunto de perro_candidato_id
+    $perro = Perro::whereNotIn('id', $perrosCandidatos)
+        ->inRandomOrder()
+        ->first();
+
+        if (!$perro) {
+            return response()->json(['error' => 'No hay perros disponibles'], 404);
+        }
+    
+        // Retornar el perro
+        $data = [
+            'id' => $perro->id,
+            'nombre' => $perro->nombre,
+            'descripcion' => $perro->descripcion,
+            'url_foto' => $perro->url_foto,
+        ];
+    
+        return response()->json($data);
+}
 }
 
