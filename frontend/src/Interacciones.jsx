@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function Interacciones() {
-    const [dog, setDog] = useState({ nombre: '',descripcion: '' , url_foto: ''});
+    const [dog, setDog] = useState({ nombre: '', descripcion: '', url_foto: '' });
 
     const handleChange = (e) => {
-        setDog({ ...dog, [e.target.name]: e.target.value });        
+        setDog({ ...dog, [e.target.name]: e.target.value });
     }
 
     const handleSubmit = (e) => {
@@ -30,13 +30,16 @@ function Interacciones() {
     function getRandomDogImage() {
         axios.get('https://dog.ceo/api/breeds/image/random')
             .then(response => {
-                console.log(response.data.message); // URL de la imagen aleatoria
+                setDog({ ...dog, url_foto: response.data.message });
             })
             .catch(error => {
                 console.error('Error:', error);
             });
     }
-    getRandomDogImage();
+    // Llama a getRandomDogImage cuando el componente se monta
+        useEffect(() => {
+        getRandomDogImage();
+    }, []);
 
     //Realiza una solicitud de ejemplo utilizando axios
     const verInteracciones = async () => {
@@ -67,7 +70,9 @@ function Interacciones() {
                     Foto (URL):
                     <input type="text" name="url_foto" value={dog.url_foto} onChange={handleChange} />
                 </label>
-               
+                <img src={dog.url_foto} alt="Imagen del perro" />
+                <button type="button" onClick={getRandomDogImage}>Obtener otra imagen</button>
+
                 <button type="submit">Registrar</button>
             </form>
         </div>
