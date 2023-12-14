@@ -26,7 +26,7 @@ function DogSelector() {
     }, []);
 
     const seleccionarPerro = (perro) => {
-        console.log("Perro seleccionado:", perro.nombre);
+        console.log("Perro seleccionado:", perro.id);
         setPerroSeleccionado(perro);
         // Navegar a la página de interacciones
         navigate("/interacciones");

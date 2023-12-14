@@ -2,14 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import Interacciones from './pages/Interacciones.jsx';
+import Registro from './pages/Registro.jsx';
 import DogSelector from './pages/DogSelector.jsx';
 
 const Router = createBrowserRouter([
 
   {
-    path: '/interacciones',
-    element: <Interacciones />
+    path: '/registro',
+    element: <Registro />
   },
   {
     path: '/',
