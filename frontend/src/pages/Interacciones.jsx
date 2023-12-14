@@ -41,19 +41,6 @@ function Interacciones() {
 		getRandomDogImage();
 	}, []);
 
-	//Realiza una solicitud de ejemplo utilizando axios
-	const verInteracciones = async () => {
-		axios
-			.get(`${apiUrl}/perros`)
-			.then((response) => {
-				console.log(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	};
-	console.log("viendo interacciones");
-	//verInteracciones();
 
 	return (
 		<div>

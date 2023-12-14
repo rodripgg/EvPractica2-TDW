@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DogCard from "../components/DogCard.jsx";
+import { useNavigate } from "react-router-dom";
+
 import "./Styles/DogSelector.css";
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -7,6 +9,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 function DogSelector() {
     const [perros, setPerros] = useState([]);
     const [perroSeleccionado, setPerroSeleccionado] = useState(null);
+    const navigate = useNavigate();
 
     const obtenerPerros = async () => {
         try {
@@ -25,6 +28,8 @@ function DogSelector() {
     const seleccionarPerro = (perro) => {
         console.log("Perro seleccionado:", perro.nombre);
         setPerroSeleccionado(perro);
+        // Navegar a la página de interacciones
+        navigate("/interacciones");
     }
 
     return (
