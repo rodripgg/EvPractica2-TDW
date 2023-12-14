@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DogCard from "../components/DogCard.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 import "./Styles/DogSelector.css";
 
@@ -29,7 +29,7 @@ function DogSelector() {
         console.log("Perro seleccionado:", perro.id);
         setPerroSeleccionado(perro);
         // Navegar a la página de interacciones
-        navigate("/interacciones");
+        navigate("/interacciones", { state: { perro: perro } });
     }
 
     return (

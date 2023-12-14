@@ -80,11 +80,11 @@ class PerroController extends Controller
 
         // Retornar el nombre, descripción y URL de la foto del perro
         $data = [
+            'id' => $perro->id,
             'nombre' => $perro->nombre,
             'descripcion' => $perro->descripcion,
             'url_foto' => $perro->url_foto,
         ];
-
 
         return response()->json($data);
     }
