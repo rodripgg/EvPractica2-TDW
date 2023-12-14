@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // En el componente Interacciones
 import { useLocation } from "react-router-dom";
 import RandomDogCard from "../components/RandomDogCard";
+import ListarCandidatos from "./ListarCandidatos";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -50,6 +51,7 @@ const Interaccion = () => {
 					</div>
 				)}
 			</div>
+			<ListarCandidatos perroInteresadoId={perro.id} />
 		</div>
 	);
 };
