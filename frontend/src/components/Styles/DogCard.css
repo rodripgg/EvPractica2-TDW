@@ -1,27 +1,47 @@
 .dog-card {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 5px;
     margin: 10px;
     width: 200px;
     text-align: center;
     border-radius: 10px;
     transition: 0.2s;
+    height: 300px;
 }
 
 .dog-card:hover {
-    border: 1px solid #000000;
+    background-color: #707070;
 }
 
 .dog-card img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
+    transition: 0.2s;
+    
+}
+
+.dog-card:hover img {
+    margin-top: 10px;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 .dog-card-image {
-    border: 1px solid #ddd;
     width: 100%;
-    height: 200px;
     object-fit: cover;
     border-radius: 10px;
 }
+
+.descripcion{
+    opacity: 0;
+    transition: 0.2s;
+    font-size:medium
+}
+
+.dog-card:hover p {
+    opacity: 100;
+}
+

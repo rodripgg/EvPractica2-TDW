@@ -34,7 +34,8 @@ function DogSelector() {
 
     return (
         <div>
-            <h1>Lista de Perros</h1>
+            <h1 className="titulo" >Lista de Perros</h1>
+            <h3 className="subtitulo">Selecciona a tu perro para ingresar a DogLovers</h3>
 
             <div className="dog-container">
                 {perros.length > 0 ? (

@@ -3,3 +3,11 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.titulo {
+    text-align: center;
+}
+
+.subtitulo {
+    text-align: center;
+}

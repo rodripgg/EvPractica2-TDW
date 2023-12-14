@@ -7,8 +7,8 @@ function DogCard({ perro }) {
 			<div className="dog-card-image">
 				<img src={perro.url_foto} alt={`Foto de ${perro.nombre}`} />
 			</div>
-			<h3>{perro.nombre}</h3>
-			<p>{perro.descripcion}</p>
+			<h3 className="nombre">{perro.nombre}</h3>
+			<p className="descripcion">{perro.descripcion}</p>
 		</div>
 	);
 }
