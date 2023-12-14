@@ -13,10 +13,19 @@ const Interaccion = () => {
 
 	const obtenerPerroRandom = async () => {
 		try {
-			const response = await fetch(`${apiUrl}/interacciones/random/${perro.id}`); // /interacciones/random/id
-            // revisa si ya existe una interaccion entre el perro seleccionado y el perro random
-			const data = await response.json();
-			setPerroRandom(data);
+			const response = await fetch(
+				`${apiUrl}/interacciones/random/${perro.id}`
+			);
+			// si la respuesta es 404, no hay perros disponibles
+			if (response.status === 404) {
+				console.log("No hay perros disponibles");
+				return;
+			} else {
+				// revisa si ya existe una interaccion entre el perro seleccionado y el perro random
+				const data = await response.json();
+				console.log("Respuesta del servidor:", data);
+				setPerroRandom(data);
+			}
 		} catch (error) {
 			console.error("Error al obtener perroRandom:", error);
 		}

@@ -14,4 +14,9 @@ class Perro extends Model
     protected $table = 'perros';
 
     protected $fillable = ['nombre', 'foto_url', 'descripcion'];
+
+    public function interacciones()
+    {
+        return $this->hasMany(Interaccion::class);
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;;
+namespace App\Http\Controllers;
+
+;
 
 use Illuminate\Http\Request;
 use App\Models\Interaccion;
@@ -75,17 +77,19 @@ class InteraccionController extends Controller
         return response()->json($interaccion, 200);
     }
 
-    public function aceptados($id){
+    public function aceptados($id)
+    {
         $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'aceptado')->get();
-        if($interaccion->isEmpty()){
+        if ($interaccion->isEmpty()) {
             return response()->json(['error' => 'no hay perros aceptados'], 404);
         }
         return response()->json($interaccion);
     }
-    
-    public function rechazados($id){
+
+    public function rechazados($id)
+    {
         $interaccion = Interaccion::where('perro_interesado_id', $id)->where('preferencia', 'rechazado')->get();
-        if($interaccion->isEmpty()){
+        if ($interaccion->isEmpty()) {
             return response()->json(['error' => 'no hay perros rechazados'], 404);
         }
         return response()->json($interaccion);
@@ -97,7 +101,7 @@ class InteraccionController extends Controller
         $interaccion = Interaccion::where('perro_interesado_id', $idInteresado)->where('perro_candidato_id', $idCandidato)->where('preferencia', 'aceptado')->first();
         $interaccion2 = Interaccion::where('perro_interesado_id', $idCandidato)->where('perro_candidato_id', $idInteresado)->where('preferencia', 'aceptado')->first();
 
-        if($interaccion && $interaccion2){
+        if ($interaccion && $interaccion2) {
             return response()->json(['message' => 'match'], 200);
         }
         return response()->json(['message' => 'no hay match'], 204);
@@ -105,30 +109,30 @@ class InteraccionController extends Controller
     }
 
     public function random($idInteresado)
-{
-    // Obtener todos los perro_candidato_id para el perro_interesado_id dado
-    $perrosCandidatos = Interaccion::where('perro_interesado_id', $idInteresado)
-        ->pluck('perro_candidato_id')
-        ->push($idInteresado);
-
-    // Obtener todos los perros que no están en el conjunto de perro_candidato_id
-    $perro = Perro::whereNotIn('id', $perrosCandidatos)
-        ->inRandomOrder()
-        ->first();
-
-        if (!$perro) {
-            return response()->json(['error' => 'No hay perros disponibles'], 404);
+    {
+        // Obtener todos los perros
+        $perros = Perro::all();
+        // Obtener los perros que ya han recibido una interacción ya sea aceptado o rechazado
+        $perrosAceptados = Interaccion::where('perro_interesado_id', $idInteresado)->where('preferencia', 'aceptado')->pluck('perro_candidato_id');
+        $perrosRechazados = Interaccion::where('perro_interesado_id', $idInteresado)->where('preferencia', 'rechazado')->pluck('perro_candidato_id');
+        // perros ya aceptados o rechazados
+        $perrosConInteraccion = $perrosAceptados->merge($perrosRechazados);
+        // Obtener los perros que no han recibido una interacción
+        $perrosSinInteraccion = $perros->whereNotIn('id', $perrosConInteraccion);
+        // si no hay perros sin interaccion, se muestra un mensaje indicando que no hay mas perros
+        if ($perrosSinInteraccion->isEmpty()) {
+            return response()->json(['message' => 'No hay más perros.'], 404);
         }
-    
-        // Retornar el perro
+        // Obtener un perro aleatorio de los que no han recibido una interacción
+        $perroAleatorio = $perrosSinInteraccion->random();
+        // se retorna el perro aleatorio id, nombre, foto_url, descripcion
         $data = [
-            'id' => $perro->id,
-            'nombre' => $perro->nombre,
-            'descripcion' => $perro->descripcion,
-            'url_foto' => $perro->url_foto,
+            'id' => $perroAleatorio->id,
+            'nombre' => $perroAleatorio->nombre,
+            'url_foto' => $perroAleatorio->url_foto,
+            'descripcion' => $perroAleatorio->descripcion,
         ];
-    
         return response()->json($data);
-}
+    }
 }
 
