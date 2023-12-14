@@ -3,7 +3,7 @@ import './App.css'
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
 
-import interacciones from './Interacciones';
+import interacciones from './pages/Interacciones';
 
 function App() {
 

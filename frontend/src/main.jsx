@@ -3,9 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import Interacciones from './Interacciones';
+import Interacciones from './pages/Interacciones.jsx';
+import DogSelector from './pages/DogSelector.jsx';
 
 const Router = createBrowserRouter([
+  {
+    path: '/DogSelector',
+    element: <DogSelector/>
+  },
   {
     path: '/interacciones',
     element: <Interacciones />
