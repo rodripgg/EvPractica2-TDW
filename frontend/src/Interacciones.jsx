@@ -16,14 +16,12 @@ function Interacciones() {
             .then(response => {
                 console.log(response.data);
                 console.log(dog);
-
             })
             .catch((error) => {
                 console.error('Error:', error);
                 console.error('Error de Axios:', error);
                 console.log('Detalles del error:', error.response.data);
                 console.log('Código de estado HTTP:', error.response.status);
-
             });
     }
 
@@ -66,10 +64,7 @@ function Interacciones() {
                     Descripción:
                     <input type="text" name="descripcion" value={dog.descripcion} onChange={handleChange} />
                 </label>
-                <label>
-                    Foto (URL):
-                    <input type="text" name="url_foto" value={dog.url_foto} onChange={handleChange} />
-                </label>
+                
                 <img src={dog.url_foto} alt="Imagen del perro" />
                 <button type="button" onClick={getRandomDogImage}>Obtener otra imagen</button>
 
