@@ -40,7 +40,7 @@ const ListarCandidatos = ({ perroInteresadoId}) => {
 
     return (
         <div>
-            <h1>Perros Aceptados</h1>
+            <h3>Perros Aceptados</h3>
             <ul>
                 {perrosAceptados.map(perro => (
 
@@ -51,7 +51,7 @@ const ListarCandidatos = ({ perroInteresadoId}) => {
 
                 ))}
             </ul>
-            <h1>Perros Rechazados</h1>
+            <h3>Perros Rechazados</h3>
             <ul>
                 {perrosRechazados.map(perro => (
                     <li key={perro.id}>

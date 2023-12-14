@@ -1,0 +1,35 @@
+/* Interaccion.css */
+
+.interaccion-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.interaccion-title {
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+.perro-info {
+	margin-bottom: 20px;
+}
+
+.obtener-perro-btn {
+	background-color: #007bff;
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+}
+
+.obtener-perro-btn:hover {
+	background-color: #0056b3;
+}
+
+.dog-container {
+	margin-top: 20px;
+}
+
+/* Add more styles as needed */
